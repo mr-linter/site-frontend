@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@master
 
       - name: 'Check build'
-        run: make build
+        run: npm run build
 
       - name: 'Auto Merge'
         if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
