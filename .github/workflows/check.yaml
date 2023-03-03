@@ -10,5 +10,7 @@ jobs:
 
     steps:
       - name: 'Auto Merge'
-        run: 'echo "kuku"'
         if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
+        uses: alexwilson/enable-github-automerge-action@main
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
