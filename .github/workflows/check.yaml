@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: 'Auto Merge'
         if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
-        uses: alexwilson/enable-github-automerge-action@main
+        uses: daneden/enable-automerge-action@v1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+          allowed-author: 'ArtARTs36'
