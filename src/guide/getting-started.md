@@ -19,7 +19,7 @@ docker run -v "${PWD}:/app/:rw" --user 1000:1000 -it artarts36/merge-request-lin
 
 When writing a config, look at [JSON Schema](../mr-linter-config-schema.json).
 
-## ➜ Usage with GitHub Actions
+## Usage with GitHub Actions
 
 [View on Marketplace](https://github.com/marketplace/actions/merge-request-linter)
 
@@ -37,18 +37,18 @@ branches: [ master ]
 
 jobs:
 build:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-   steps:
+    steps:
       - uses: actions/checkout@v2
 
       - name: Lint Pull Request
         uses: mr-linter/mr-linter-ga@v0.2.0
         env:
-           MR_LINTER_GITHUB_TOKEN: ${{ secrets.MR_LINTER_GITHUB_HTTP_TOKEN }}
+          MR_LINTER_GITHUB_TOKEN: ${{ secrets.MR_LINTER_GITHUB_HTTP_TOKEN }}
 ```
 
-## ➜ Usage with Gitlab CI
+## Usage with Gitlab CI
 
 [See example](https://gitlab.com/artem_ukrainsky/mr-linter-testing/)
 
