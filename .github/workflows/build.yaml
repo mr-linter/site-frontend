@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Build/Push image
+        run: |
+          make docker-build
+          make docker-push USER=artarts36 TOKEN=${{ secrets.GITHUB_TOKEN }}

@@ -7,7 +7,11 @@ build:
 	npm run build
 
 docker-build:
-	docker build -f build/Dockerfile -t mr-linter/site-frontend .
+	docker build -f build/Dockerfile -t ghcr.io/mr-linter/site-frontend .
+
+docker-push:
+	@echo "${TOKEN}" | docker login ghcr.io -u ${USER} --password-stdin
+	docker push ghcr.io/mr-linter/site-frontend
 
 docker-run:
-	docker run mr-linter/site-frontend
+	docker run ghcr.io/mr-linter/site-frontend
