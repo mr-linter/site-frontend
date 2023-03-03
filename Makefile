@@ -1,3 +1,5 @@
+.PHONY: build
+
 run:
 	npm run dev
 
