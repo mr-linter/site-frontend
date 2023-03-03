@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: 'Check build'
+        uses: actions/setup-node@master
+        run: make build
+
       - name: 'Auto Merge'
         if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
         uses: peter-evans/enable-pull-request-automerge@v2
