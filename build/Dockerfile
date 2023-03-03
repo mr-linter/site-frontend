@@ -18,4 +18,6 @@ WORKDIR /app
 
 COPY --from=appbuild /app/src/.vuepress/dist /app/dist
 
+EXPOSE 8080
+
 CMD [ "http-server", "dist" ]
