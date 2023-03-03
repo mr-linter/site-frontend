@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: 'Auto Merge'
         if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
-        uses: alexwilson/enable-github-automerge-action@main
+        uses: peter-evans/enable-pull-request-automerge@v2
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
