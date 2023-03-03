@@ -37,15 +37,15 @@ branches: [ master ]
 
 jobs:
 build:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-   steps:
+    steps:
       - uses: actions/checkout@v2
 
       - name: Lint Pull Request
         uses: mr-linter/mr-linter-ga@v0.2.0
         env:
-           MR_LINTER_GITHUB_TOKEN: ${{ secrets.MR_LINTER_GITHUB_HTTP_TOKEN }}
+          MR_LINTER_GITHUB_TOKEN: ${{ secrets.MR_LINTER_GITHUB_HTTP_TOKEN }}
 ```
 
 ## ➜ Usage with Gitlab CI
