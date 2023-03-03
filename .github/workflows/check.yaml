@@ -1,0 +1,23 @@
+name: Check
+
+on:
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: 'Auto Merge'
+        if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
