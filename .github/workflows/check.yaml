@@ -21,6 +21,10 @@ jobs:
         env:
           MR_LINTER_GITHUB_HTTP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  auto_merge:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: 'Auto Merge'
         if: github.event.pull_request.user.login == 'ArtARTs36' && startsWith(github.event.pull_request.title, '[AUTO]')
         uses: peter-evans/enable-pull-request-automerge@v2
