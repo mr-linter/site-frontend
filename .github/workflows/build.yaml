@@ -16,6 +16,19 @@ jobs:
           make docker-build
           make docker-push USER=artarts36 TOKEN=${{ secrets.GITHUB_TOKEN }}
 
+      - if: ${{ failure() }}
+        name: Send notification about failure build
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🔻 Build failed on commit "${{ github.event.head_commit.message }}" by ${{ github.event.head_commit.author.username }}
+            
+            🔗 Commit url: ${{ github.event.head_commit.url }}
+            
+            🌐 Url to failed job: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
   deploy:
     needs:
       - build
@@ -30,3 +43,26 @@ jobs:
           user: ${{ secrets.PROD_USER }}
           key: ${{ secrets.PROD_SSH_KEY }}
           command: ${{ secrets.PROD_DEPLOY_COMMAND }}
+
+      - if: ${{ failure() }}
+        name: Send notification about failure build
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🔻 Deploy failed on commit "${{ github.event.head_commit.message }}" by ${{ github.event.head_commit.author.username }}
+
+            🔗 Commit url: ${{ github.event.head_commit.url }}
+
+            🌐 Url to failed job: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - if: ${{ success() }}
+        name: Send notification about failure build
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            💚 Deploy succeed on commit "${{ github.event.head_commit.message }}" by ${{ github.event.head_commit.author.username }}
+            ➡️ See new mr-linter.dev
