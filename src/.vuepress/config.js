@@ -67,6 +67,7 @@ module.exports = {
             'run-in-docker',
             'development',
             'notifications',
+            'CHANGELOG',
           ]
         }
       ],
