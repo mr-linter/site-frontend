@@ -24,9 +24,9 @@ jobs:
 
     steps:
       - name: Deploy
-        uses: garygrossgarten/github-action-ssh@release
+        uses: nerd4ever/ssh-action@master
         with:
           host: ${{ secrets.PROD_SSH_HOST }}
-          username: ${{ secrets.PROD_USER }}
-          privateKey: ${{ secrets.PROD_SSH_KEY }}
+          user: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
           command: ${{ secrets.PROD_DEPLOY_COMMAND }}
