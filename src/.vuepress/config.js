@@ -45,7 +45,7 @@ module.exports = {
       },
       {
         text: 'Docs',
-        link: '/docs'
+        link: '/guide/'
       },
       {
         text: 'GitHub',
