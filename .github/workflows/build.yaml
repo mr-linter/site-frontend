@@ -16,6 +16,20 @@ jobs:
           make docker-build
           make docker-push USER=artarts36 TOKEN=${{ secrets.GITHUB_TOKEN }}
 
+      - if: ${{ failure() }}
+        name: Send notification about failure build
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🔻 Build failed on commit "${{ github.head_commit.message }}" by ${{ github.author.username }}
+            
+            🔗 Commit url: ${{ github.head_commit.url }}
+            
+            🌐 Url to failed job: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+
   deploy:
     needs:
       - build
