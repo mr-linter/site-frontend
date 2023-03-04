@@ -19,6 +19,6 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          Build failed on commit "${{ github.event.commits[0].message }}"
+          🔻 Build failed on commit "${{ github.event.commits[0].message }}"
 
-          Url to failed build: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          🌐 Url to failed build: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
