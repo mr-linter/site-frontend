@@ -16,8 +16,15 @@ jobs:
           make docker-build
           make docker-push USER=artarts36 TOKEN=${{ secrets.GITHUB_TOKEN }}
 
+  deploy:
+    needs:
+      - build
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.PROD_SSH_HOST }}
           username: ${{ secrets.PROD_USER }}
