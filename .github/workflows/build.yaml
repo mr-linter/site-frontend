@@ -24,9 +24,9 @@ jobs:
 
     steps:
       - name: Deploy
-        uses: appleboy/ssh-action@v0.1.4
+        uses: docker://evaneos/ssh-action:0.1.0
         with:
-          host: ${{ secrets.PROD_SSH_HOST }}
-          username: ${{ secrets.PROD_USER }}
-          key: ${{ secrets.PROD_SSH_KEY }}
-          script: ${{ secrets.PROD_DEPLOY_COMMAND }}
+          hosts: ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: ${{ secrets.PROD_DEPLOY_COMMAND }}
