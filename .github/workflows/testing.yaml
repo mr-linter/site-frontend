@@ -19,8 +19,8 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          🔻 Build failed on commit "${{ github.head_commit.message }}" by ${{ github.author.username }}
+          🔻 Build failed on commit "${{ github.event.head_commit.message }}" by ${{ github.event.head_commit.author.username }}
           
-          🔗 Commit url: ${{ github.head_commit.url }}
+          🔗 Commit url: ${{ github.event.head_commit.url }}
           
           🌐 Url to failed job: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
