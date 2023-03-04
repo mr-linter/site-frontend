@@ -24,9 +24,9 @@ jobs:
 
     steps:
       - name: Deploy
-        uses: docker://evaneos/ssh-action:0.1.0
+        uses: garygrossgarten/github-action-ssh@release
         with:
-          hosts: ${{ secrets.PROD_SSH_HOST }}
-          user: ${{ secrets.PROD_USER }}
-          private_key: ${{ secrets.PROD_SSH_KEY }}
-          commands: ${{ secrets.PROD_DEPLOY_COMMAND }}
+          host: ${{ secrets.PROD_SSH_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          privateKey: ${{ secrets.PROD_SSH_KEY }}
+          command: ${{ secrets.PROD_DEPLOY_COMMAND }}
