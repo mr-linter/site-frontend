@@ -15,3 +15,11 @@ jobs:
         run: |
           make docker-build
           make docker-push USER=artarts36 TOKEN=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup ssh keys
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.PROD_SSH_KEY }}
+
+      - name: Deploy
+        run: "eval '$(PROD_DEPLOY_COMMAND)'"
