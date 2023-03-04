@@ -11,9 +11,13 @@ jobs:
     steps:
 
     - name: Failing step
-      id: demo
       run: exit 1
 
-    - name: The demo step has failed
-      if: ${{ failure() }}
-      run: "echo 'kuku'"
+    - if: ${{ failure() }}
+      name: Send notification about failure build
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Build failed on commit "${{ github.event.commits[0].message }}"
