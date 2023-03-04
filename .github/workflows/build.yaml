@@ -65,4 +65,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             💚 Deploy succeed on commit "${{ github.event.head_commit.message }}" by ${{ github.event.head_commit.author.username }}
-            ➡️See new mr-linter.dev
+            ➡️ See new mr-linter.dev
