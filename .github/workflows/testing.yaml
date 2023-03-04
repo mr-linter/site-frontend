@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Dump GitHub context
+      id: github_context_step
+      run: echo '${{ toJSON(github) }}'
+    - name: Dump job context
+      run: echo '${{ toJSON(job) }}'
 
     - name: Failing step
       run: exit 1
