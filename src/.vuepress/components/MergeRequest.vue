@@ -29,6 +29,15 @@
     </div>
 
     <div class="merge-request-field">
+      <div class="col">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text" id="merge-request-author-name">Author login</span>
+          <input type="text" v-model="merge_request.author.login" class="form-control" aria-label="dev" aria-describedby="merge-request-author-name">
+        </div>
+      </div>
+    </div>
+
+    <div class="merge-request-field">
       <div style="display: inline-block">
         <b-dropdown id="dropdown-1" text="Labels">
           <b-dropdown-item @click="addLabel">Add</b-dropdown-item>

@@ -47,6 +47,9 @@ export default {
         target_branch: 'master',
         created_at: new Date(),
         labels: ['Feature'],
+        author: {
+          login: 'developer',
+        },
       },
       lint_result: null,
       validation_fails: null,
