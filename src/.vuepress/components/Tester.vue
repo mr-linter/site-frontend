@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     lintRequest() {
-      axios.post('http://localhost:8000/api/linter/lint', {
+      axios.post('https://api.mr-linter.dev/api/linter/lint', {
         config: JSON.parse(this.lint_config.definition),
         mergeRequest: this.merge_request,
       })
