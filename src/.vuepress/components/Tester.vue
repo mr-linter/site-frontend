@@ -104,8 +104,8 @@ export default {
           this.lint_result = response.data
         })
         .catch((error) => {
-          console.log(error.response.data.errors)
           this.validation_fails = error.response.data.errors;
+          this.lint_result = null;
         })
     }
   }

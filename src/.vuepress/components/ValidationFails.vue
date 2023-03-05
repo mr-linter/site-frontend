@@ -1,22 +1,23 @@
 <template>
-  <div class="card" style="border-radius: 0">
-    <h5 class="card-header">Validation failed</h5>
+  <div class="card br-none">
+    <div class="card-header">
+      <strong>Validation failed</strong>
+    </div>
+
     <div class="card-body">
-      <table class="table">
+      <table class="table" style="width: 100%; display: table">
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Error</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        <tr v-for="(fail, i) in preparedErrors">
+          <th scope="row">{{ ++i }}</th>
+          <td>{{ fail.subject }}</td>
+          <td>{{ fail.error }}</td>
         </tr>
         </tbody>
       </table>
@@ -34,7 +35,7 @@ export default {
         let fail = this.fails[name]
 
         for (let i in fail) {
-          errors.push({'error': fail[i]})
+          errors.push({'subject': name, 'error': fail[i]})
         }
       }
 

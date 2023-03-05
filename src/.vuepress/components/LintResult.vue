@@ -14,7 +14,7 @@
       </div>
 
       <div class="table-responsive" v-if="this.result.notes.length > 0">
-        <table class="table notes-table" style="width: 100%; display: table">
+        <table class="table" style="width: 100%; display: table">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Note</th>
@@ -45,8 +45,3 @@ export default {
 }
 </script>
 
-<style>
-  .notes-table th, td {
-    border: 1px solid #ccc;
-  }
-</style>
