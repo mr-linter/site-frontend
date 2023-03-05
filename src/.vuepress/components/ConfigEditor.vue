@@ -39,16 +39,10 @@ export default {
   resize: none;
   margin: 0;
   padding: 5px;
-  height: 320px;
+  height: 350px;
   box-sizing: border-box;
   overflow: auto;
   outline: 0 none;
   color: #666;
-}
-
-.config-editor .title {
-  padding: 15px;
-  border-bottom: 1px solid #ccc;
-  font-size: 14pt;
 }
 </style>

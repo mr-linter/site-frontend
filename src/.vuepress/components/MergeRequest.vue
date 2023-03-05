@@ -9,7 +9,7 @@
       </textarea>
     </div>
 
-    <div class="merge-request-tags">
+    <div class="merge-request-field">
       <div class="input-group input-group-sm">
         <span class="input-group-text" id="merge-request-source-branch">source branch</span>
         <input type="text" v-model="merge_request.source_branch" class="form-control" aria-label="dev" aria-describedby="merge-request-source-branch">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="merge-request-tags">
+    <div class="merge-request-field">
       <div class="col">
         <div class="input-group input-group-sm">
           <span class="input-group-text" id="merge-request-changed-files-count">Changed files count</span>
@@ -28,16 +28,26 @@
       </div>
     </div>
 
-    <div class="merge-request-tags">
-      <div>
-        <b-dropdown id="dropdown-1" text="Labels" class="m-md-2">
-          <b-dropdown-item>Add</b-dropdown-item>
-          <b-dropdown-item>Clear</b-dropdown-item>
+    <div class="merge-request-field">
+      <div style="display: inline-block">
+        <b-dropdown id="dropdown-1" text="Labels">
+          <b-dropdown-item @click="addLabel">Add</b-dropdown-item>
+          <b-dropdown-item @click="clearLabels">Clear</b-dropdown-item>
         </b-dropdown>
+      </div>
+
+      <div style="display: inline-block">
+        <div v-for="(_, i) in merge_request.labels" style="display: inline-block">
+            <b-input
+                class="merge-request-label"
+                v-model="merge_request.labels[i]"
+            >
+            </b-input>
+        </div>
       </div>
     </div>
 
-    <div class="merge-request-tags">
+    <div class="merge-request-field">
       <div class="row">
         <div class="col">
           <div class="form-check">
@@ -67,6 +77,10 @@
         </div>
       </div>
     </div>
+
+    <div style="border-top: 1px solid #ccc; padding: 5px">
+        <b-form-datepicker v-model="merge_request.created_at" class="br-none border-0"></b-form-datepicker>
+    </div>
   </div>
 </template>
 
@@ -74,6 +88,14 @@
 export default {
   props: {
     merge_request: Object
+  },
+  methods: {
+    addLabel() {
+      this.merge_request.labels.push('Label');
+    },
+    clearLabels() {
+      this.merge_request.labels = []
+    },
   }
 }
 </script>
@@ -125,8 +147,13 @@ export default {
   border-bottom: 1px dashed #ccc;
 }
 
-.merge-request-tags {
+.merge-request-field {
   border-top: 1px solid #ccc;
   padding: 15px;
+}
+
+.merge-request-label {
+  margin: 5px;
+  max-width: 100px;
 }
 </style>

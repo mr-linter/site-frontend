@@ -44,7 +44,9 @@ export default {
         is_draft: false,
         can_merge: true,
         source_branch: 'dev',
-        target_branch: 'master'
+        target_branch: 'master',
+        created_at: new Date(),
+        labels: ['Feature'],
       },
       lint_result: null,
       validation_fails: null,
