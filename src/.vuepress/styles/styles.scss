@@ -1,0 +1,25 @@
+// scss-docs-start import-stack
+// Configuration
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/_maps";
+@import "~bootstrap/scss/_mixins";
+@import "~bootstrap/scss/_utilities";
+
+// Layout & components
+@import "~bootstrap/scss/_root";
+@import "~bootstrap/scss/_forms";
+@import "~bootstrap/scss/_buttons";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/_grid";
+// Helpers
+@import "~bootstrap/scss/_helpers";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
+
+.br-none {
+  border-radius: 0;
+}
