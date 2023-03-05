@@ -1,6 +1,6 @@
 <template>
-  <div id="merge-request">
-    <div class="merge-request-title">
+  <div id="merge-request" class="card br-none">
+    <div class="card-header merge-request-title">
       <input type="text" v-model="merge_request.title" value="Request Title"/>
     </div>
 
@@ -62,14 +62,14 @@ export default {
 
 .merge-request-title {
   padding: 15px 15px 10px;
-  border-bottom: 1px dashed #ccc;
 }
 
 .merge-request-title input {
   border: 0 none;
   border-radius: 0;
-  font-size: 0.875rem;
+  font-size: 16px;
   font-weight: bold;
+  background: none;
 }
 
 .merge-request-description textarea {

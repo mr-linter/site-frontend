@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="border-radius: 0">
+  <div class="card br-none">
     <div class="card-header">
       <strong>Result</strong>
     </div>

@@ -1,7 +1,7 @@
 <template>
-  <div class="config-editor">
-    <div class="title">
-      Config
+  <div class="card br-none config-editor">
+    <div class="card-header" style="padding: 15px 15px 10px;">
+      <strong>Config</strong>
     </div>
     <div class="edit-form">
       <textarea class="config-editor-textarea" v-model="lint_config.definition"></textarea>
