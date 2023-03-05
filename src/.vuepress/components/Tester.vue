@@ -37,10 +37,12 @@ export default {
   data: () => {
     return {
       merge_request: {
-        title: 'Super Feature Request',
+        title: 'Request Title',
         description: '',
         changed_files_count: 10,
         has_conflicts: false,
+        is_draft: false,
+        can_merge: true,
         source_branch: 'dev',
         target_branch: 'master'
       },
@@ -48,50 +50,44 @@ export default {
       validation_fails: null,
       lint_config: {
         definition: "{\n" +
-          "  \"rules\": {\n" +
-          "    \"@mr-linter/description_contains_links_of_any_domains\": {\n" +
-          "      \"domains\": [\"vk.com\"],\n" +
-          "      \"when\": {\n" +
-          "        \"labels\": {\n" +
-          "          \"has\": \"Feature\",\n" +
-          "          \"countMin\": 1000\n" +
-          "        }\n" +
-          "      }\n" +
-          "    },\n" +
-          "    \"@mr-linter/changed_files_limit\": {\n" +
-          "      \"limit\": 1,\n" +
-          "      \"when\": {\n" +
-          "        \"title\": {\n" +
-          "          \"starts\": \"[Feature] \",\n" +
-          "          \"ends\": \"es\",\n" +
-          "          \"equals\": \"dd\"\n" +
-          "        }\n" +
-          "      }\n" +
-          "    },\n" +
-          "    \"@mr-linter/jira/has_issue_link\": {\n" +
-          "      \"domain\": \"jira.com\",\n" +
-          "      \"projectCode\": \"MYPROJECT\",\n" +
-          "      \"when\": {\n" +
-          "        \"labels\": {\n" +
-          "          \"has\": \"Feature\"\n" +
-          "        },\n" +
-          "        \"targetBranch\": {\n" +
-          "          \"ends\": \"er\"\n" +
-          "        }\n" +
-          "      }\n" +
-          "    },\n" +
-          "    \"@mr-linter/description_not_empty\": {\n" +
-          "      \"when\": {\n" +
-          "        \"targetBranch\": {\n" +
-          "          \"equals\": \"master\"\n" +
-          "        }\n" +
-          "      }\n" +
-          "    }\n" +
-          "  },\n" +
-          "  \"credentials\": {\n" +
-          "    \"github_actions\": \"env(MR_LINTER_GITHUB_HTTP_TOKEN)\"\n" +
-          "  }\n" +
-          "}",
+            "  \"rules\": {\n" +
+            "    \"@mr-linter/title_starts_with_task_number\": {\n" +
+            "      \"projectName\": \"MYPROJECT\"\n" +
+            "    },\n" +
+            "    \"@mr-linter/changed_files_limit\": {\n" +
+            "      \"limit\": 1,\n" +
+            "      \"when\": {\n" +
+            "        \"title\": {\n" +
+            "          \"starts\": \"[Feature] \",\n" +
+            "          \"ends\": \"es\",\n" +
+            "          \"equals\": \"dd\"\n" +
+            "        }\n" +
+            "      }\n" +
+            "    },\n" +
+            "    \"@mr-linter/jira/has_issue_link\": {\n" +
+            "      \"domain\": \"jira.com\",\n" +
+            "      \"projectCode\": \"MYPROJECT\",\n" +
+            "      \"when\": {\n" +
+            "        \"labels\": {\n" +
+            "          \"has\": \"Feature\"\n" +
+            "        },\n" +
+            "        \"targetBranch\": {\n" +
+            "          \"ends\": \"er\"\n" +
+            "        }\n" +
+            "      }\n" +
+            "    },\n" +
+            "    \"@mr-linter/description_not_empty\": {\n" +
+            "      \"when\": {\n" +
+            "        \"targetBranch\": {\n" +
+            "          \"equals\": \"master\"\n" +
+            "        }\n" +
+            "      }\n" +
+            "    }\n" +
+            "  },\n" +
+            "  \"credentials\": {\n" +
+            "    \"github_actions\": \"env(MR_LINTER_GITHUB_HTTP_TOKEN)\"\n" +
+            "  }\n" +
+            "}",
       },
     }
   },

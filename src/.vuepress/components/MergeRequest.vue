@@ -20,6 +20,15 @@
     </div>
 
     <div class="merge-request-tags">
+      <div class="col">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text" id="merge-request-changed-files-count">Changed files count</span>
+          <input type="number" v-model="merge_request.changed_files_count" class="form-control" aria-label="dev" aria-describedby="merge-request-changed-files-count">
+        </div>
+      </div>
+    </div>
+
+    <div class="merge-request-tags">
       <div class="row">
         <div class="col">
           <div class="form-check">
@@ -29,14 +38,23 @@
             </label>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="merge-request-tags">
-      <div class="col">
-        <div class="input-group input-group-sm">
-          <span class="input-group-text" id="merge-request-changed-files-count">Changed files count</span>
-          <input type="number" v-model="merge_request.changed_files_count" class="form-control" aria-label="dev" aria-describedby="merge-request-changed-files-count">
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" v-model="merge_request.is_draft" type="checkbox" value=true id="isDraftChecked" checked>
+            <label class="form-check-label" for="isDraftChecked">
+              Is draft?
+            </label>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" v-model="merge_request.can_merge" type="checkbox" value=true id="canMergeChecked" checked>
+            <label class="form-check-label" for="canMergeChecked">
+              Can merge?
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -70,6 +88,9 @@ export default {
   font-size: 16px;
   font-weight: bold;
   background: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .merge-request-description textarea {
