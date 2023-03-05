@@ -29,6 +29,15 @@
     </div>
 
     <div class="merge-request-tags">
+      <div>
+        <b-dropdown id="dropdown-1" text="Labels" class="m-md-2">
+          <b-dropdown-item>Add</b-dropdown-item>
+          <b-dropdown-item>Clear</b-dropdown-item>
+        </b-dropdown>
+      </div>
+    </div>
+
+    <div class="merge-request-tags">
       <div class="row">
         <div class="col">
           <div class="form-check">

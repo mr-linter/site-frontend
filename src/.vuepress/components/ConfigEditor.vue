@@ -39,7 +39,7 @@ export default {
   resize: none;
   margin: 0;
   padding: 5px;
-  height: 250px;
+  height: 320px;
   box-sizing: border-box;
   overflow: auto;
   outline: 0 none;

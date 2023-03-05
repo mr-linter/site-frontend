@@ -5,6 +5,7 @@
  */
 
 import './styles/styles.scss';
+import { BootstrapVue } from 'bootstrap-vue'
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -12,5 +13,5 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  // ...apply enhancements for the site.
+  Vue.use(BootstrapVue)
 }
