@@ -34,6 +34,13 @@ module.exports = {
     docsDir: '',
     editLinkText: '',
     lastUpdated: false,
+    algolia: {
+      apiKey: 'b20717725d4699fd54f4258e966a5ae1',
+      indexName: 'mr-linter-dev',
+      appId: 'LXPMH4BSR7',
+      searchParameters: [],
+      facetFilters: [],
+    },
     nav: [
       {
         text: 'Try',
