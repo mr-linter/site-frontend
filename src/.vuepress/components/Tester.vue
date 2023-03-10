@@ -20,9 +20,9 @@
       <div class="d-grid gap-2" style="padding-top: 10px">
         <button class="btn btn-outline-secondary" style="border-radius: 0" type="button" @click="lintRequest">Test</button>
 
-        <div class="input-group input-group-sm" v-if="share_result">
-          <span class="input-group-text" id="shared-url">Shared URL</span>
-          <input type="text" v-model="sharedUrl" class="form-control" aria-label="dev" aria-describedby="shared-url">
+        <div class="input-group" v-if="share_result">
+          <span class="input-group-text br-none" id="shared-url">Shared URL</span>
+          <input type="text" v-model="sharedUrl" class="form-control br-none" aria-label="dev" aria-describedby="shared-url">
         </div>
 
         <button class="btn btn-outline-secondary" style="border-radius: 0" type="button" @click="shareRequest" v-if="lint_result">
@@ -129,7 +129,7 @@ export default {
 
   methods: {
     shareRequest() {
-      axios.post('http://localhost:8000/api/analyses', {
+      axios.post('https://mr-linter.dev/api/analyses', {
         config: JSON.parse(this.lint_config.definition),
         mergeRequest: this.merge_request,
       })
@@ -140,7 +140,7 @@ export default {
     },
 
     loadAnalysis(id) {
-      axios.get('http://localhost:8000/api/analyses/' + id)
+      axios.get('https://mr-linter.dev/api/analyses/' + id)
           .then(response => {
             this.validation_fails = null;
             this.lint_result = response.data.result;
@@ -159,7 +159,7 @@ export default {
     },
 
     lintRequest() {
-      axios.post('http://localhost:8000/api/linter/lint', {
+      axios.post('https://mr-linter.dev/api/linter/lint', {
         config: JSON.parse(this.lint_config.definition),
         mergeRequest: this.merge_request,
       })
