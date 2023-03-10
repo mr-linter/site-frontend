@@ -19,6 +19,15 @@
 
       <div class="d-grid gap-2" style="padding-top: 10px">
         <button class="btn btn-outline-secondary" style="border-radius: 0" type="button" @click="lintRequest">Test</button>
+
+        <div class="input-group input-group-sm" v-if="share_result">
+          <span class="input-group-text" id="shared-url">Shared URL</span>
+          <input type="text" v-model="sharedUrl" class="form-control" aria-label="dev" aria-describedby="shared-url">
+        </div>
+
+        <button class="btn btn-outline-secondary" style="border-radius: 0" type="button" @click="shareRequest" v-if="lint_result">
+          Share
+        </button>
       </div>
     </div>
   </div>
@@ -53,6 +62,7 @@ export default {
       },
       lint_result: null,
       validation_fails: null,
+      share_result: null,
       lint_config: {
         definition: "{\n" +
             "  \"rules\": {\n" +
@@ -96,9 +106,60 @@ export default {
       },
     }
   },
+
+  computed: {
+    sharedUrl() {
+      return "https://mr-linter.dev/try/" + this.share_result.id;
+    },
+  },
+
+  mounted() {
+    document.title = 'Try | MR Linter';
+
+    const analysisId = this.$router.currentRoute.params.id;
+
+    console.log("loading analysis with id: " + analysisId)
+
+    if (! analysisId) {
+      return;
+    }
+
+    this.loadAnalysis(analysisId);
+  },
+
   methods: {
+    shareRequest() {
+      axios.post('http://localhost:8000/api/analyses', {
+        config: JSON.parse(this.lint_config.definition),
+        mergeRequest: this.merge_request,
+      })
+          .then(response => {
+            this.validation_fails = null;
+            this.share_result = response.data
+          })
+    },
+
+    loadAnalysis(id) {
+      axios.get('http://localhost:8000/api/analyses/' + id)
+          .then(response => {
+            this.validation_fails = null;
+            this.lint_result = response.data.result;
+            this.merge_request = response.data.analysis.merge_request;
+            this.lint_config.definition = JSON.stringify(response.data.analysis.config, null, 2);
+
+            this.$router.push({
+              "name": 'try previous analysis',
+              "id": id,
+            })
+          })
+          .catch((error) => {
+            this.validation_fails = null;
+            this.lint_result = null;
+          })
+    },
+
     lintRequest() {
-      axios.post('https://api.mr-linter.dev/api/linter/lint', {
+      axios.post('http://localhost:8000/api/linter/lint', {
         config: JSON.parse(this.lint_config.definition),
         mergeRequest: this.merge_request,
       })
