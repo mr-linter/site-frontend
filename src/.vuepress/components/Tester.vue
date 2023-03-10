@@ -129,7 +129,7 @@ export default {
 
   methods: {
     shareRequest() {
-      axios.post('https://mr-linter.dev/api/analyses', {
+      axios.post('https://api.mr-linter.dev/api/analyses', {
         config: JSON.parse(this.lint_config.definition),
         mergeRequest: this.merge_request,
       })
@@ -140,7 +140,7 @@ export default {
     },
 
     loadAnalysis(id) {
-      axios.get('https://mr-linter.dev/api/analyses/' + id)
+      axios.get('https://api.mr-linter.dev/api/analyses/' + id)
           .then(response => {
             this.validation_fails = null;
             this.lint_result = response.data.result;
@@ -159,7 +159,7 @@ export default {
     },
 
     lintRequest() {
-      axios.post('https://mr-linter.dev/api/linter/lint', {
+      axios.post('https://api.mr-linter.dev/api/linter/lint', {
         config: JSON.parse(this.lint_config.definition),
         mergeRequest: this.merge_request,
       })
