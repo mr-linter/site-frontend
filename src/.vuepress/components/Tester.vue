@@ -109,14 +109,14 @@ export default {
 
   computed: {
     sharedUrl() {
-      return "https://mr-linter.dev/try/" + this.share_result.id;
+      return "https://mr-linter.dev/try/?i=" + this.share_result.id;
     },
   },
 
   mounted() {
     document.title = 'Try | MR Linter';
 
-    const analysisId = this.$router.currentRoute.params.id;
+    const analysisId = this.$route.query.i;
 
     console.log("loading analysis with id: " + analysisId)
 
@@ -146,11 +146,6 @@ export default {
             this.lint_result = response.data.result;
             this.merge_request = response.data.analysis.merge_request;
             this.lint_config.definition = JSON.stringify(response.data.analysis.config, null, 2);
-
-            this.$router.push({
-              "name": 'try previous analysis',
-              "id": id,
-            })
           })
           .catch((error) => {
             this.validation_fails = null;
