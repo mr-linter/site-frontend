@@ -13,6 +13,10 @@
         </div>
       </div>
 
+      <LinterVersion v-if="lint_result && lint_result.linter_version" v-bind:version="lint_result.linter_version" class="mb-2">
+
+      </LinterVersion>
+
       <lint-result v-if="lint_result" v-bind:result="lint_result"></lint-result>
 
       <ValidationFails v-if="validation_fails !== null" v-bind:fails="validation_fails"></ValidationFails>
@@ -38,11 +42,12 @@ import MergeRequest from '../components/MergeRequest'
 import LintResult from '../components/LintResult'
 import ValidationFails from '../components/ValidationFails'
 import ConfigEditor from "./ConfigEditor";
+import LinterVersion from "./LinterVersion";
 
 const axios = require('axios')
 
 export default {
-  components: {ConfigEditor, LintResult, MergeRequest, ValidationFails},
+  components: {LinterVersion, ConfigEditor, LintResult, MergeRequest, ValidationFails},
   data: () => {
     return {
       merge_request: {
@@ -99,8 +104,12 @@ export default {
             "      }\n" +
             "    }\n" +
             "  },\n" +
-            "  \"credentials\": {\n" +
-            "    \"github_actions\": \"env(MR_LINTER_GITHUB_HTTP_TOKEN)\"\n" +
+            "  \"ci\": {\n" +
+            "    \"github_actions\": {\n" +
+            "      \"credentials\": {\n" +
+            "        \"token\": \"env(MR_LINTER_GITHUB_HTTP_TOKEN)\"\n" +
+            "      }\n" +
+            "    }\n" +
             "  }\n" +
             "}",
       },
