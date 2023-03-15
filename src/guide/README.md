@@ -1,6 +1,6 @@
 # Introduction
 
-MR Linter is a pull request/pull request validation tool. MR Linter is written with love in PHP.
+MR Linter is a pull/merge request validation tool. MR Linter is written with love in PHP.
 
 #### Links
 
