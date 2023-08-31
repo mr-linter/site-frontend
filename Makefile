@@ -14,4 +14,4 @@ docker-push:
 	docker push ghcr.io/mr-linter/site-frontend
 
 docker-run:
-	docker run ghcr.io/mr-linter/site-frontend
+	docker run -p 8080:8080 ghcr.io/mr-linter/site-frontend
