@@ -72,7 +72,7 @@ export default {
         definition: "{\n" +
             "  \"rules\": {\n" +
             "    \"@mr-linter/title_starts_with_task_number\": {\n" +
-            "      \"projectName\": \"MYPROJECT\"\n" +
+            "      \"projectCodes\": [\"MYPROJECT\"]\n" +
             "    },\n" +
             "    \"@mr-linter/changed_files_limit\": {\n" +
             "      \"limit\": 1,\n" +
@@ -86,7 +86,7 @@ export default {
             "    },\n" +
             "    \"@mr-linter/jira/has_issue_link\": {\n" +
             "      \"domain\": \"jira.com\",\n" +
-            "      \"projectCode\": \"MYPROJECT\",\n" +
+            "      \"projectCodes\": [\"MYPROJECT\"]\,\n" +
             "      \"when\": {\n" +
             "        \"labels\": {\n" +
             "          \"has\": \"Feature\"\n" +
